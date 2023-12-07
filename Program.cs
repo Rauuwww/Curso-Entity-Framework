@@ -4,8 +4,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Update;
 
 var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddDbContext<TareasContext>(p => p.UseInMemoryDatabase("TareasDB"));
-
+//builder.Services.AddDbContext<TareasContext>(p => p.UseInMemoryDatabase("TareasDB"));
+builder.Services.AddSqlServer<TareasContext>("Data Source=RUUU\\RUUUY; Initial Catalog=TareasDb; user id=sa; password=qwerty; TrustServerCertificate=True");
 var app = builder.Build();
 
 app.MapGet("/", () => "Hello World!");

@@ -12,7 +12,11 @@ app.MapGet("/dbconexion", async ([FromServices] TareasContext dbContext) =>
 {
     dbContext.Database.EnsureCreated();//asegura que la DB este creado o no
     return Results.Ok($"Base de datos en memoria: {dbContext.Database.IsInMemory()}");
+});
 
+app.MapGet("api/v1/tareas", async ([FromServices] TareasContext dbContext) =>
+{
+    return Results.Ok(dbContext.Tareas.Include(p => p.Categoria).Where(p => p.PrioridadTarea == Curso_Entity_Framework.Models.Prioridad.Alta));
 });
 
 app.Run();

@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace Curso_Entity_Framework.Models
 {
@@ -17,6 +18,7 @@ namespace Curso_Entity_Framework.Models
         public DateTime FechaCreacion { get; set; }
         public virtual Categoria Categoria { get; set; }
         //[NotMapped]
+        [JsonIgnore]
         public string Resumen {  get; set; }
         
     }
